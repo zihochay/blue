@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            html,body{
+                height: 100%;
+                background: #000;
+                perspective: 1200px;
+            }
+             
+            #heart{
+                width: 80px;
+                height: 120px;
+                animation: first 9s infinite;
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                transform-style: preserve-3d;
+            }
+            @keyframes first{
+                from{transform: rotateZ(0deg) rotateX(0deg);}
+                to{transform: rotateZ(360deg) rotateX(360deg);}
+            }
+            ul{
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                transform-style: preserve-3d;
+            }
+            li{
+                width: 50px;
+                height: 50px;
+                list-style: none;
+                background: #fff;
+                opacity: 1;
+                position: absolute;
+                top: 0;
+            }
+            ul>li:nth-child(1){
+                transform: rotateY(90deg) translateZ(25px);
+            }
+            ul>li:nth-child(2){
+                transform: rotateY(90deg) translateZ(-25px);
+            }
+            ul>li:nth-child(3){
+                transform: rotateX(90deg) translateZ(25px);
+            }
+            ul>li:nth-child(4){
+                transform: rotateX(90deg) translateZ(-25px);
+            }
+            ul>li:nth-child(5){
+                transform: translateZ(25px);
+            }
+            ul>li:nth-child(6){
+                transform: translateZ(-25px);
+            }
+            img{
+                width: 50px;
+                height: 50px;
+                display: block;
+                border: none;
+            }
+            #heart>div{
+                position: absolute;
+                top: 0;
+                width: 80px;
+                height: 120px;
+                border: 1px solid red;
+                border-left: 0;
+                border-bottom: 0;
+                border-radius: 61px 52px 64px 43px/65px 39px 0px 0px;
+                /*transform: rotateZ(45deg);*/
+            }
+            #text {
+                color: white;
+                width: 100%;
+                /* border: 1px solid red; */
+                height: 30px;
+                line-height: 50px;
+                text-align: center;
+                /* margin-left: 35%; */
+                padding-top: 30px;
+            }
+            #text>div {
+                /* border: 1px solid red; */
+                height: 24px;
+            }
+            #day {
+                color: pink;
+            }
+            .engText {
+                color: blueviolet
+            }
+            .text2 {
+                color: white;
+                /* border: 1px solid red; */
+                position: absolute;
+                bottom: 100px;
+                text-align: center;
+                width: 500px;
+                margin-left: 50%;
+                left: -250px;
+            }
+            .text>div {
+                /* border: 1px solid red; */
+                height: 24px;
+            }
+            .lastText {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="text">
+            <div> 
+                和最爱的小蓝在一起已经
+                <span id="day"></span>  啦～
+            </div>
+            <div>希望我们在未来的日子里，把彼此作为自己的支撑</div>
+            <div>累的时候就抱抱对方，开心的时候就一起哈哈哈</div>
+            <div>在平平淡淡的生活中，偶有激情，不失仪式感</div>
+            <div>很想和你有个长久的未来</div>
+            <div>很想每天打开手机就能收到你的微信</div>
+            <div>很想你每个开心或者不开心的瞬间都能跟我分享</div>
+            <div>很想把我的宝贝捧在手心上，不让你受到一点点委屈</div>
+            <div class="engText">❤️Because Love U Everyday❤️</div>
+        </div>
+        <div id="heart">
+            <ul>
+                <li><img src="img/1.jpeg" ></li>
+                <li><img src="img/2.jpeg" ></li>
+                <li><img src="img/3.jpeg" ></li>
+                <li><img src="img/4.jpeg" ></li>
+                <li><img src="img/5.jpeg" ></li>
+                <li><img src="img/6.jpeg" ></li>
+            </ul>
+        </div>
+        <audio 
+            autoplay="autoplay" 
+            loop="loop" 
+            preload="auto"
+            src="img/prefect.mp3">
+        </audio>
+        <div class="text2">
+            <div>希望憨憨可以相信，在我心里真的只有你</div>
+            <div>我们的感情从一开始就注定是不一般的</div>
+            <div>虽然从开始到现在一直没办法见面</div>
+            <div>但我相信好事永远都是多磨的</div>
+            <div class="lastText">❤️我会相信光，也会相信女朋友❤️</div>
+        </div>
+        <script type="text/javascript">
+            var oHeart = document.getElementById("heart");
+            for(var i = 0;i < 36;i++){
+                var oDiv = document.createElement("div");//创建div
+                oHeart.appendChild(oDiv);//在heart中添加div
+                oDiv.style.transform = "rotateY("+i*10+"deg) rotateZ(45deg) translateX(23px)";
+            }
+            var int=self.setInterval("clock()",1000);
+            function clock() {
+                var day = document.getElementById("day");
+                var t1=new Date("2022/11/12 20:24:00"); //格式正确不需要转换
+        
+                var data=new Date();//获取当前时间
+                var times=data.getTime()-t1.getTime();//时间差的毫秒数
+        
+                var days=parseInt(times/(24*1000*3600));//计算相差的天数
+                var leave=times%(24*3600*1000);//计算天数后剩余的毫秒数
+        
+                var h=parseInt(leave/(3600*1000));//计算小时数
+        
+                    //计算分钟数
+                var h_leave=leave%(3600*1000);
+                var min=parseInt(h_leave/(60*1000));
+        
+                    //计算秒数
+                var min_leave=h_leave%(60*1000);
+                var sec=parseInt(min_leave/1000);
+
+                day.innerHTML = `${days}天${h}小时${min}分钟${sec}秒`
+            }
+        </script>
+    </body>
+</html>
